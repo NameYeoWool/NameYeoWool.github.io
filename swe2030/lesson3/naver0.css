@@ -1,0 +1,25 @@
+body{margin:0}
+
+
+.top{
+    text-align: center;
+
+}
+.menu{
+    text-align: center;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    
+    
+}
+.contents{
+    text-align: center;
+    background:#ddd;
+}
+
+.centerbox{
+    width:965px;
+    background:#fff;
+    margin: 0 auto 0 auto;
+    
+}
