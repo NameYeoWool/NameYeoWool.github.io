@@ -21,11 +21,41 @@
             span{font-size:20px;display:block;}
 
             #test{font-size:50px; color:aqua;} /*id selector . 고유성*/
-            .test{font-size:50px;color:red;} /*class selector . 그룹*/
+            #tes2{font-size:50px;color:red}
+            .test{background: #00ff00} /*class selector . 그룹*/
+            .test2{background: #ffff00}
+        
+            /* 태그 클래스 아이디 순   인라인(태그에 직접 스타일 기술)이 최상위*/
+            /* id, tag 중복 등.. 중복해서 사용함*/
+
+            /* space bar는 자손 selector(선택자) */
+            h1 span{background:gray;}
+            h1 div span{color:#ff0000;}
+
+            /* 직계자손 선택자 -- span2 만 선택 됨*/
+            h1 > span{text-decoration: underline}
+
+
+            /* 조합 가능 */
+
+            div #test{background: #00ff00}
+            div .test2{background: #ff0000}
+
+            /* but 조합시 작은 그룹에서 큰 그룹으로 나아가는 방향을 지향 */
+            #test span{background: }
+
+
         </style>
         
     </head>
     <body style>
+        <h1>
+            <div><span>span</span></div>
+            <span>span2</span>
+        </h1>
+
+
+
         <span>a</span>
         <span id="test">b</span>
         <span>b</span>
