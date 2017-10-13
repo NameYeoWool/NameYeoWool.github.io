@@ -134,9 +134,14 @@
             console.log(f1(5));
 
                 // 기본형이 아니기에 copy 되지 않고 참조
-            var f2 = f1
-            console.log(f2(5))
+            var double = f1
+            console.log(double(5))
+
+            var f3 = function(f,v){
+                return f(v);
+            };
             
+            console.log(f3(double,5))
 
         </script>
     </body>
