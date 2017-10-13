@@ -1,0 +1,82 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //프로토타입 protytype - javaScript에서 고유명사 - 클래스를 대체하기 위한 system
+            // 클래스
+            // new 구문 지원
+           
+            /*class Student{    -- 우리가 배우는 version에서는 지원안함 이후 버전에서 지원
+                
+            }*/ 
+
+            // 생성자 - 그냥 함수다
+            var Student = function(name, grade){
+                if(this instanceof Student){                    // 왼쪽의 코드와 같이 바꾸게 되면 
+                    this.name = name;                           //함수를 호출해도 인스턴스의 인자로 만들어진다.
+                    this.grade =grade;
+                    /*this.display = function(){                // 생성자를 만들때마다 function을 만들게 됨
+                        console.log(tis.name + "::" + this.grade);    // 기존 클래스에서는 메소드 한번 만들어서 활용
+                    }*/
+                }else{
+                    return new Student(name,grade);
+                }
+                
+                //원래의 코드
+                //this.name = name;       // new Student 하지 않고 함수 호출하면 this는 전역을 의미
+                //this.grade= grade;      // new Student - 생성자로 만들면 instance의 인자로 만들어짐.
+
+            };
+
+            // 함수를 만들면 무조건 javaScript 상에서 prototype 속성이 있다. - 배열에 length 속성이 있는 것처럼
+            // var f = function(){}
+            //f.prototype
+            Student.prototype.display = function(){             // class에서 메소드를 한번 만들어서 활용하는
+                console.log(this.name + "::" + this.grade);     // 방식과 일치 시키는 코드 - 이러면 메소드
+            }                                                  //한번만 만들게 된다.
+
+
+            var str1 = Student("길동",2);                         // 위와 같이 코드를 바꾸면 에러 안생긴다.
+            console.log(str1.name,str1.grade);
+            
+            console.log(student.display());
+
+
+            //Student("hika",1); // new Student("hika",1) 도 가능
+            //console.log(name,grade);
+
+            var student = new Student("hika",1);
+            console.log(student.name, student.grade);
+            console.log(student instanceof Student);
+            
+            //단지 new를 붙여서 사용하면 생성자로 작동하고 그냥 호출하면 함수로 작동할뿐
+            //var student = new Student();
+            //console.log(student);
+
+
+            //
+
+
+            
+            // class 를 javaScript 상에서 활용하게 만들었는데 
+            // 그러면 상속은 어떻게 할까?
+            var base = function(){}
+            var Extended = function(){}
+                    // Class Extended extends base
+            Extended.prototype = new Base();
+
+            // static 은?
+                    /*Class Extended extends base(){
+                        static action() {
+                            
+                        }
+                    }*/
+            Extended.action = function(){} // 속성으로 그냥 만들어 버린다.
+
+
+
+        </script>
+    </body>
+</html>
