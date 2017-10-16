@@ -35,12 +35,15 @@
             //f.prototype
             Student.prototype.display = function(){             // class에서 메소드를 한번 만들어서 활용하는
                 console.log(this.name + "::" + this.grade);     // 방식과 일치 시키는 코드 - 이러면 메소드
-            }                                                  //한번만 만들게 된다.
+            };                                                  //한번만 만들게 된다.
 
 
+            /*
             var str1 = Student("길동",2);                         // 위와 같이 코드를 바꾸면 에러 안생긴다.
             console.log(str1.name,str1.grade);
-            
+            */
+
+            var student = new Student("hika",1);
             console.log(student.display());
 
 
@@ -62,8 +65,8 @@
             
             // class 를 javaScript 상에서 활용하게 만들었는데 
             // 그러면 상속은 어떻게 할까?
-            var base = function(){}
-            var Extended = function(){}
+            var Base = function(){};
+            var Extended = function(){};
                     // Class Extended extends base
             Extended.prototype = new Base();
 

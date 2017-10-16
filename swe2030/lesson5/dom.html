@@ -17,7 +17,7 @@
 
             // 스팩상 모든 documen는 body,head 가 있다.
             var body = document.body;
-            console.log(body.children[1].childrem[0].innerHTML) // inner 찍힘 / innerHTML 속성은 읽고 쓰기 가능한 속성
+            console.log(body.children[1].children[0].innerHTML) // inner 찍힘 / innerHTML 속성은 읽고 쓰기 가능한 속성
             console.log(document.getElementsByTagName("div")) // 좀더 편리하게 찾기
             console.log(document.getElementById("test").innerHTML = "안녕하세요");   // id를 통해서 찾기
                                                                                     // 내용 동적 변화 가능
@@ -34,23 +34,27 @@
 
             var brightness = function(color){
                 panel.style.backgroundColor = "rgb("+color+","+color+","+color+")";
-            }
+            };
             
             var msg="hello";
             panel.addEventListener("click",function(event){      //(이벤트명, 함수)
                 alert(msg);
-            }) 
-
+            }); 
+            
+            
             panel.addEventListener("mouseover",function(event){
                 brightness(200);
-            })
+            });
+            
 
             (function(){                                        // 즉시 실행 함수 (f)()    - f() 는 함수 정의
-                var brightness = function(){};                  // shadow 시켜서  이 함수내에서만
-                panel.addEventListener("mouseover", function(evetn){  // 원하는 brightness를 만들어서 쓸 수 있음.
+                var brightness = function(){
+                    panel.style.backgroundColor = "rgb(200,200,200)";
+                };                  // shadow 시켜서  이 함수내에서만
+                panel.addEventListener("mouseover", function(event){  // 원하는 brightness를 만들어서 쓸 수 있음.
                     brightness();
-                })
-            })()
+                });
+            })();
             
             panel.addEventListener("mouseout",function(event){
                 brightness(255);
