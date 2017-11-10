@@ -18,15 +18,20 @@
             request.send("a=3&b=5");
         
 
-
-
             $.get("jq1.html",{a:5, b:3},function(data,status){
                 console.log(data);
             })
 
             $.get("jq1.html",{a:5, b:3},function(data,status){
                 console.log(data);
-            }
+            })
+
+            var el = $('#id');
+            $.get("jq1.html",{a:3, b:5},function(data,status){
+                el.html(data);
+            });
+
+            #('#id').load
             //httm:// www.naver.com /    index.html ?      a=3&b=4       # abcde
            // scheme    domain       pathname(or Resource)    querystring    hash
         </script>
