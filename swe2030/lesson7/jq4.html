@@ -1,0 +1,35 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        
+        <script>
+                        
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function(){
+                if(request.readyState == 4){
+                    if(request.status == 200){
+                        console.log(request.responseText);
+                    }
+                }
+            };
+            request.open("GET", "jq1.html?a=3&b=5");
+            request.send();
+        
+
+
+
+            $.get("jq1.html",{a:5, b:3},function(data,status){
+                console.log(data);
+            })
+
+            $.get("jq1.html",{a:5, b:3},function(data,status){
+                console.log(data);
+            }
+            //httm:// www.naver.com /    index.html ?      a=3&b=4       # abcde
+           // scheme    domain       pathname(or Resource)    querystring    hash
+        </script>
+
+    </body>
+</html>>
