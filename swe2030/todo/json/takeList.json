@@ -1,0 +1,81 @@
+{
+    "result":"ok",
+    "data":[
+        {   
+            // 할일 목록에 들어갔을 때 표현되는 기본 데이터
+            "id":1,
+            "name":"오늘 할 일",
+            "color":"white",
+            "name-size": 16,
+            "today":"11월 12일 일요일",
+            "today-size":12
+        },
+        {
+            // todo 목록에 들어갔을 때 표현되는 기본 데이터
+            "id":2,
+            "name":"To-Do",
+            "color":"white",
+            "name-size":16
+        },
+
+        // 여기서부터는 할일 리스트에 리스트가 작성되어 있다고 가정하고
+        //만들었습니다.
+        {
+            //할일 목록과 todo 목록을 만드는데 공통으로 필요한 데이터
+            "id":"Todo1",
+            "date":"11월 12일 일요일", // 날짜가 오늘 날짜인 경우
+            "name":"과제",
+            "color":"black",
+            "name-size":10,
+            "icon":"circle",
+            "checked":false,
+            "sub_name-size":9,
+            
+
+            // 할일 리스트를 표현하는데 필요한 데이터
+            "today_sub-name":"To-do",
+
+            
+            //To do 리스트를 표현하는데 필요한 데이터
+            "todo_today_icon":"sun",
+            "todo_!today_icon":"note",
+
+            "todo_sub-name1":"오늘 할 일",
+            "todo_sub_name1_color":"blue",
+            
+            "todo_sub_name2":"11월 12일 (일)",
+            "todo_sub_name2_color":"black",
+            "todo_sub_name2_blur":true,
+
+
+        },
+        {
+            "id":"Todo2",
+            "date":"11월 20일 월요일", // 날짜가 오늘이 아닌경우 즉, 오늘 이후의 일정
+            "name":"추후에 할 일",
+            "color":"black",
+            "name-size":10,
+            "icon":"circle",
+            "checked":false,
+            "sub_name-size":9,
+            
+
+            //할일 리스트를 표현하는데 필요한 데이터
+            "todya_sub-name":"To-do",
+
+            //To do 리스트를 표현하는데 필요한 데이터
+            "todo_today_icon":"sun",
+            "todo_!today_icon":"note",
+
+            "todo_sub-name1":"오늘 할 일",
+            "todo_sub_name1_color":"blue",
+            
+            "todo_sub_name2":"11월 20일 (월)",
+            "todo_sub_name2_color":"black",
+            "todo_sub_name2_blur":true
+            
+        }
+
+
+    ]
+}
