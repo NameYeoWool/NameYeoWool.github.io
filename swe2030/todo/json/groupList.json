@@ -15,7 +15,18 @@
             "color":"blue",
             "icon":"home",
             "count":0
+        },
+
+        //추가 리스트를 작성했을 때
+        {
+            "id":3,
+            "name":"addtion",
+            "color":"black",
+            "icon":"list",
+            "count":0
         }
 
+
     ]
+    
 }
