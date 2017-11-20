@@ -22,11 +22,11 @@
                     icon = selecIcon(arr[i].icon)
                     if(arr[i].count != 0){
                         list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
-                            + arr[i].name + "</span>" +"<span id='count1' style='float:right'>"+ arr[i].count +"</span>" +"</li>"
+                            + arr[i].name + "</span>" +"<span style='float:right'>"+ arr[i].count +"</span>" +"</li>"
                     }else{
                         list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
                             + arr[i].name  +"</span>" +"</li>"
-                
+            
                     }
                 }
                 $('#list').html(list);
