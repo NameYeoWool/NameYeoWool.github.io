@@ -4,7 +4,7 @@
         {
             "id":1,
             "name":"오늘 할 일",
-            "color":"blue",
+            "color":"black",
             "icon":"sun",
             "count":0
             
@@ -12,35 +12,35 @@
         {
             "id":2,
             "name":"To-Do",
-            "color":"blue",
+            "color":"black",
             "icon":"home",
             "count":0
         },
         {
             "id":3,
             "name":"자료구조개론",
-            "color":"red",
+            "color":"black",
             "icon":"list",
             "count":0
         },
         {
             "id":4,
             "name":"프로그래밍입문",
-            "color":"green",
+            "color":"black",
             "icon":"list",
             "count":0
         },
         {
             "id":5,
             "name":"확률과정론",
-            "color":"yellow",
+            "color":"black",
             "icon":"list",
             "count":0
         },
         {
             "id":6,
             "name":"알고리즘",
-            "color":"blue",
+            "color":"black",
             "icon":"list",
             "count":0
         }

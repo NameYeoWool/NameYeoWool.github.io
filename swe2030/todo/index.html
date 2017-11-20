@@ -15,14 +15,12 @@
         <script>
             $.get("https://nameyeowool.github.io/swe2030/todo/json/groupList.json",function(result,data){
                 var arr = result.data;
-                var list = "";
-                for( var i=0; i < arr.lenth; i++){
-                    list += "<li>" + "<span style = 'color:" + arr[i].color +"'>;</span>"+arr[i].name +"</li>"
-                    
+                list="";
+                for(var i = 0; i<arr.length; i++){
+                    list += "<li>"+ "<span style='color:" + arr[i].color + ";'>" + arr[i].name + "</span>" + arr[i].count + "</li>"
                 }
-
-                $('#list').html(list)
-            })
+                $('#list').html(list);
+            });
         </script>
     </body>
 </htm>
