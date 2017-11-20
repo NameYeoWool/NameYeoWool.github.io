@@ -2,7 +2,7 @@
     <head></head>
     <body>
         <style>
-            ul{list-style:none}
+            ul{list-style:none; margin: 0;padding: 0; clear:both; }
         </style>
 
         <ul id="list"></ul>
@@ -17,10 +17,43 @@
                 var arr = result.data;
                 list="";
                 for(var i = 0; i<arr.length; i++){
-                    list += "<li>"+ "<span style='color:" + arr[i].color + ";'>" + arr[i].name + "</span>" + arr[i].count + "</li>"
+                    icon = selecIcon(arr[i].icon)
+                    list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " +  arr[i].name + "</span>" + arr[i].count + "</li>"
                 }
                 $('#list').html(list);
             });
+
+
+            function add(){
+                prompt("새 목록","제목없는 목록");
+                
+                $.get("https://nameyeowool.github.io/swe2030/todo/json/groupAdd.json",function(result,data){
+                var arr2 = result.data;
+                list2="";
+                for(var i = 0; i<arr2.length; i++){
+                    icon2 = selecIcon(arr2[i].icon)
+                    list2 += "<li>"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " + arr2[i].name + "</span>" + arr2[i].count + "</li>"
+                }
+                $('#list').html(list2);
+            });
+
+            }
+
+            function selecIcon( item ){
+                if ( item == "sun"){
+                    return '\u263c';
+                }else if(item == "home" ){
+                    return '\u2302';
+                }else{
+                    return '\u2630';
+                }
+            }
+
         </script>
+
+
+        <div id="plus" style="color:blue" onclick="add();">+ 새 목록</div>
+
+        </div>
     </body>
 </htm>
