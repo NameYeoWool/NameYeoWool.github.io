@@ -1,0 +1,28 @@
+<htm>
+    <head></head>
+    <body>
+        <style>
+            ul{list-style:none}
+        </style>
+
+        <ul id="list"></ul>
+
+        <script
+        src = "http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity = "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+        <script>
+            $.get("https://nameyeowool.github.io/swe2030/todo/json/groupList.json",function(result,data){
+                var arr = result.data;
+                var list = "";
+                for( var i=0; i < arr.lenth; i++){
+                    list += "<li>" + "<span style = 'color:" + arr[i].color +"'>;</span>"+arr[i].name +"</li>"
+                    
+                }
+
+                $('#list').html(list)
+            })
+        </script>
+    </body>
+</htm>
