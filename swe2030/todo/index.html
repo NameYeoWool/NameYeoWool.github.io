@@ -3,6 +3,8 @@
     <body>
         <style>
             ul{list-style:none; margin: 0;padding: 0; clear:both; }
+
+            #plust{float:bottom}
         </style>
 
         <ul id="list"></ul>
@@ -18,7 +20,14 @@
                 list="";
                 for(var i = 0; i<arr.length; i++){
                     icon = selecIcon(arr[i].icon)
-                    list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " +  arr[i].name + "</span>" + arr[i].count + "</li>"
+                    if(arr[i].count != 0){
+                        list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
+                            + arr[i].name + "</span>" +"<span id='count1' style='float:right'>"+ arr[i].count +"</span>" +"</li>"
+                    }else{
+                        list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
+                            + arr[i].name  +"</span>" +"</li>"
+                
+                    }
                 }
                 $('#list').html(list);
             });
@@ -32,8 +41,15 @@
                 list2="";
                 for(var i = 0; i<arr2.length; i++){
                     icon2 = selecIcon(arr2[i].icon)
-                    list2 += "<li>"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " + arr2[i].name + "</span>" + arr2[i].count + "</li>"
+                    if(arr2[i].count != 0 ){
+                        list2 += "<li>"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
+                                    + arr2[i].name + "</span>" +"<span style='float:right'>"+ arr2[i].count +"</span>" +"</li>"
+                    }else{
+                        list2 += "<li>"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
+                                    + arr2[i].name  +"</span>" +"</li>"
+                    }
                 }
+
                 $('#list').html(list2);
             });
 

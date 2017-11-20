@@ -28,14 +28,14 @@
             "name":"프로그래밍입문",
             "color":"black",
             "icon":"list",
-            "count":0
+            "count":1
         },
         {
             "id":5,
             "name":"확률과정론",
             "color":"black",
             "icon":"list",
-            "count":0
+            "count":2
         }
 
 
