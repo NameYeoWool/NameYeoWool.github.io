@@ -8,11 +8,13 @@
         </style>
 
         <ul id="list"></ul>
-
+        
         <script
         src = "http://code.jquery.com/jquery-3.2.1.min.js"
         integrity = "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+        // https 는 http 보다 보안등급이 높다. 따라서 src에서  http 인데 밑에 get에서 https로 받으므로
+        //밑의 보안코드가 더 높으므로 돌아가지가 않는다.(반대의 경우는 돌아간다.)</script>
 
         <script>
             $.get("https://nameyeowool.github.io/swe2030/todo/json/groupList.json",function(result,data){
@@ -34,8 +36,12 @@
 
 
             function add(){
+                // prompt 로 받은 값은 변수에 담아 get 두번째 인자로 보내야 했다.
                 prompt("새 목록","제목없는 목록");
                 
+
+                // get 두번째 인자로 데이터를 보내야 했다. + function 은 위의 get에서 쓴 로직과 같으므로 밖으로 꺼내서
+                //한번만 정의했어도 된다.
                 $.get("https://nameyeowool.github.io/swe2030/todo/json/groupAdd.json",function(result,data){
                 var arr2 = result.data;
                 list2="";
