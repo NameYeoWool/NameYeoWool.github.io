@@ -118,7 +118,7 @@
 
           
                     for(var i = 0; i<arr3.length; i++){
-                        list4 += "<li >" +"<input type='checkboxk';" + arr4[i].name +arr4[i].alaram + arr4[i].Due + arr4[i].Note +  "</li>";
+                        list4 += "<li >" +"<input type='checkboxk'; checked =" + arr4[i].check+ "onclick="+ checkBox(arr4[i].check)+">" + arr4[i].name +arr4[i].alaram + arr4[i].Due + arr4[i].Note +  "</li>";
                     }
                     $('#list').html(list4);
                     $('#head').css("background-color","blue" );
