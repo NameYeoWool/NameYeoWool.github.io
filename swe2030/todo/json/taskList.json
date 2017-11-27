@@ -2,7 +2,7 @@
     "data": [
         {
             "id":1, 
-            "name":"", 
+            "name":"To-Do", 
             "list": "To-Do",
             "Due": "Today",
             "check": "True"

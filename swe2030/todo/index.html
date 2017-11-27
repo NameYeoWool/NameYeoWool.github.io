@@ -1,16 +1,18 @@
-<htm>
-    <head></head>
+
+<html>
+    <head>
+        
+    </head>
     <body>
         <style>
             ul{list-style:none; margin: 0;padding: 0; clear:both; }
-
             #plust{float:bottom}
         </style>
 
         <ul id="list"></ul>
         
         <script
-        src = "http://code.jquery.com/jquery-3.2.1.min.js"
+        src = "https://code.jquery.com/jquery-3.2.1.min.js"
         integrity = "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
         // https 는 http 보다 보안등급이 높다. 따라서 src에서  http 인데 밑에 get에서 https로 받으므로
@@ -33,13 +35,10 @@
                 }
                 $('#list').html(list);
             });
-
-
             function add(){
                 // prompt 로 받은 값은 변수에 담아 get 두번째 인자로 보내야 했다.
                 prompt("새 목록","제목없는 목록");
                 
-
                 // get 두번째 인자로 데이터를 보내야 했다. + function 은 위의 get에서 쓴 로직과 같으므로 밖으로 꺼내서
                 //한번만 정의했어도 된다.
                 $.get("https://nameyeowool.github.io/swe2030/todo/json/groupAdd.json",function(result,data){
@@ -55,12 +54,9 @@
                                     + arr2[i].name  +"</span>" +"</li>"
                     }
                 }
-
                 $('#list').html(list2);
             });
-
             }
-
             function selecIcon( item ){
                 if ( item == "sun"){
                     return '\u263c';
@@ -71,6 +67,20 @@
                 }
             }
 
+
+            $(document).on("click","li",function(){
+                $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",function(result,data){
+                var arr3 = result.data;
+                list3="";
+                for(var i = 0; i<arr3.length; i++){
+                    list3 += "<li>"+ "<span>"+arr3[0].name+"</span>"+"</li>"
+                }
+                $('#list').html(list3);
+            })
+            })
+           
+
+           
         </script>
 
 
@@ -78,4 +88,4 @@
 
         </div>
     </body>
-</htm>
+</html>
