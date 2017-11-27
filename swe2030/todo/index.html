@@ -25,36 +25,40 @@
                 for(var i = 0; i<arr.length; i++){
                     icon = selecIcon(arr[i].icon)
                     if(arr[i].count != 0){
-                        list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
+                        list += "<li id = "+ i+">"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
                             + arr[i].name + "</span>" +"<span style='float:right'>"+ arr[i].count +"</span>" +"</li>"
                     }else{
-                        list += "<li>"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
+                        list += "<li id = "+ i+">"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
                             + arr[i].name  +"</span>" +"</li>"
             
                     }
                 }
                 $('#list').html(list);
+                $('#plus').text("+ 새 목록")
+                
             });
             function add(){
                 // prompt 로 받은 값은 변수에 담아 get 두번째 인자로 보내야 했다.
-                prompt("새 목록","제목없는 목록");
+                var s = prompt("새 목록","제목없는 목록");
                 
                 // get 두번째 인자로 데이터를 보내야 했다. + function 은 위의 get에서 쓴 로직과 같으므로 밖으로 꺼내서
                 //한번만 정의했어도 된다.
-                $.get("https://nameyeowool.github.io/swe2030/todo/json/groupAdd.json",function(result,data){
+                $.get("https://nameyeowool.github.io/swe2030/todo/json/groupAdd.json",{"name":s,"color":blue,"icon":'\u2630'},function(result,data){
                 var arr2 = result.data;
                 list2="";
                 for(var i = 0; i<arr2.length; i++){
                     icon2 = selecIcon(arr2[i].icon)
                     if(arr2[i].count != 0 ){
-                        list2 += "<li>"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
+                        list2 += "<li id = "+ i +">"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
                                     + arr2[i].name + "</span>" +"<span style='float:right'>"+ arr2[i].count +"</span>" +"</li>"
                     }else{
-                        list2 += "<li>"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
+                        list2 += "<li id = "+ i+">"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
                                     + arr2[i].name  +"</span>" +"</li>"
                     }
                 }
                 $('#list').html(list2);
+                $('#plus').text("+ 새 목록")
+                $('#list li').attr("onclick","Task(this.id)")
             });
             }
             function selecIcon( item ){
@@ -67,16 +71,43 @@
                 }
             }
 
-
-            $(document).on("click","li",function(){
+            /*
+            function Task(id){
                 $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",function(result,data){
-                var arr3 = result.data;
-                list3="";
-                for(var i = 0; i<arr3.length; i++){
-                    list3 += "<li>"+ "<span>"+arr3[0].name+"</span>"+"</li>"
-                }
-                $('#list').html(list3);
-            })
+                    var arr3 = result.data;
+                    list3="<li id='head' style='color:white';>"+ arr3[0].list+"</li>";
+
+                    for(var i = 0; i<arr3.length; i++){
+                        list3 += "<li >" +"<input type='checkboxk';" + arr3[i].name +arr3[i].alaram + arr3[3].Due + arr[3].Note +  "</li>";
+                    }
+    
+                    $('#list').html(list3);
+                    $('#head').css("background-color","blue" );
+
+
+                
+                });
+
+            }            
+            */
+            
+            $(document).on("click","li",function(){
+                    $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",function(result,data){
+                    var arr3 = result.data;
+                    list3="<li id='head' style='color:white';>"+ arr3[0].name+"</li>";
+
+          
+                    for(var i = 0; i<arr3.length; i++){
+                        list3 += "<li>"+ "<input type = 'checkbox'>"+ arr3[i].list+"</li>"
+                    }
+                    $('#list').html(list3);
+                    $('#head').css("background-color","blue" );
+                    $('#plus').text("+")
+
+
+                    
+                })
+                
             })
            
 
