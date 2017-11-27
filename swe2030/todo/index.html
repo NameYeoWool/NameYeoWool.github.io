@@ -98,18 +98,43 @@
 
           
                     for(var i = 0; i<arr3.length; i++){
-                        list3 += "<li>"+ "<input type = 'checkbox'>"+ arr3[i].list+"</li>"
+                        list3 += "<li >" +"<input type='checkboxk';" + arr3[i].name +arr3[i].alaram + arr3[i].Due + arr3[i].Note +  "</li>";
                     }
                     $('#list').html(list3);
                     $('#head').css("background-color","blue" );
-                    $('#plus').text("+")
+                    $('#plus').text("+");
+                    $('#plus').att("onclick","addTask()");
 
 
-                    
                 })
                 
             })
            
+
+           function addTask(){
+            $.get("https://nameyeowool.github.io/swe2030/todo/json/taskAdd.json",function(result,data){
+                    var arr4 = result.data;
+                    list4="<li id='head' style='color:white';>"+ arr4[0].name+"</li>";
+
+          
+                    for(var i = 0; i<arr3.length; i++){
+                        list4 += "<li >" +"<input type='checkboxk';" + arr4[i].name +arr4[i].alaram + arr4[i].Due + arr4[i].Note +  "</li>";
+                    }
+                    $('#list').html(list4);
+                    $('#head').css("background-color","blue" );
+                    
+            
+           });
+           }
+
+           function checkBox(isChecked){
+               if ( isChecked == false){
+                   isChecked = true;
+               }else{
+                   isChecked = false;
+               }
+               $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",{"check":isChecked})
+           }
 
            
         </script>
