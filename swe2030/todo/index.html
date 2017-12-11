@@ -1,147 +1,70 @@
-
 <html>
     <head>
         
-    </head>
-    <body>
         <style>
-            ul{list-style:none; margin: 0;padding: 0; clear:both; }
-            #plust{float:bottom}
+            img {width:24px;vertical-align:middle;margin-left:15px;margin-right:15px;}
+            span {vertical-align:middle}
+            .list {height:30px;}
+            .list img {width:30px}
+            .count {position:absolute;right:50px;color:gray}
         </style>
 
-        <ul id="list"></ul>
-        
         <script
-        src = "https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity = "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous">
-        // https 는 http 보다 보안등급이 높다. 따라서 src에서  http 인데 밑에 get에서 https로 받으므로
-        //밑의 보안코드가 더 높으므로 돌아가지가 않는다.(반대의 경우는 돌아간다.)</script>
-
-        <script>
-            $.get("https://nameyeowool.github.io/swe2030/todo/json/groupList.json",function(result,data){
-                var arr = result.data;
-                list="";
-                for(var i = 0; i<arr.length; i++){
-                    icon = selecIcon(arr[i].icon)
-                    if(arr[i].count != 0){
-                        list += "<li id = "+ i+">"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
-                            + arr[i].name + "</span>" +"<span style='float:right'>"+ arr[i].count +"</span>" +"</li>"
-                    }else{
-                        list += "<li id = "+ i+">"+ "<span style='color:" + arr[i].color + ";'>"+"<span style='color:blue'>"+ icon+ "</span>"+"                  " 
-                            + arr[i].name  +"</span>" +"</li>"
-            
-                    }
-                }
-                $('#list').html(list);
-                $('#plus').text("+ 새 목록")
-                
-            });
-            function add(){
-                // prompt 로 받은 값은 변수에 담아 get 두번째 인자로 보내야 했다.
-                var s = prompt("새 목록","제목없는 목록");
-                
-                // get 두번째 인자로 데이터를 보내야 했다. + function 은 위의 get에서 쓴 로직과 같으므로 밖으로 꺼내서
-                //한번만 정의했어도 된다.
-                $.get("https://nameyeowool.github.io/swe2030/todo/json/groupAdd.json",{"name":s,"color":blue,"icon":'\u2630'},function(result,data){
-                var arr2 = result.data;
-                list2="";
-                for(var i = 0; i<arr2.length; i++){
-                    icon2 = selecIcon(arr2[i].icon)
-                    if(arr2[i].count != 0 ){
-                        list2 += "<li id = "+ i +">"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
-                                    + arr2[i].name + "</span>" +"<span style='float:right'>"+ arr2[i].count +"</span>" +"</li>"
-                    }else{
-                        list2 += "<li id = "+ i+">"+ "<span style='color:" + arr2[i].color + ";'>"+"<span style='color:blue'>"+ icon2+ "</span>"+"                  " 
-                                    + arr2[i].name  +"</span>" +"</li>"
-                    }
-                }
-                $('#list').html(list2);
-                $('#plus').text("+ 새 목록")
-                $('#list li').attr("onclick","Task(this.id)")
-            });
-            }
-            function selecIcon( item ){
-                if ( item == "sun"){
-                    return '\u263c';
-                }else if(item == "home" ){
-                    return '\u2302';
-                }else{
-                    return '\u2630';
-                }
-            }
-
-            /*
-            function Task(id){
-                $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",function(result,data){
-                    var arr3 = result.data;
-                    list3="<li id='head' style='color:white';>"+ arr3[0].list+"</li>";
-
-                    for(var i = 0; i<arr3.length; i++){
-                        list3 += "<li >" +"<input type='checkboxk';" + arr3[i].name +arr3[i].alaram + arr3[3].Due + arr[3].Note +  "</li>";
-                    }
-    
-                    $('#list').html(list3);
-                    $('#head').css("background-color","blue" );
-
-
-                
-                });
-
-            }            
-            */
-            
-            $(document).on("click","li",function(){
-                    $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",function(result,data){
-                    var arr3 = result.data;
-                    list3="<li id='head' style='color:white';>"+ arr3[0].name+"</li>";
-
-          
-                    for(var i = 0; i<arr3.length; i++){
-                        list3 += "<li >" +"<input type='checkboxk';" + arr3[i].name +arr3[i].alaram + arr3[i].Due + arr3[i].Note +  "</li>";
-                    }
-                    $('#list').html(list3);
-                    $('#head').css("background-color","blue" );
-                    $('#plus').text("+");
-                    $('#plus').att("onclick","addTask()");
-
-
-                })
-                
-            })
-           
-
-           function addTask(){
-            $.get("https://nameyeowool.github.io/swe2030/todo/json/taskAdd.json",function(result,data){
-                    var arr4 = result.data;
-                    list4="<li id='head' style='color:white';>"+ arr4[0].name+"</li>";
-
-          
-                    for(var i = 0; i<arr3.length; i++){
-                        list4 += "<li >" +"<input type='checkboxk'; checked =" + arr4[i].check+ "onclick="+ checkBox(arr4[i].check)+">" + arr4[i].name +arr4[i].alaram + arr4[i].Due + arr4[i].Note +  "</li>";
-                    }
-                    $('#list').html(list4);
-                    $('#head').css("background-color","blue" );
-                    
-            
-           });
-           }
-
-           function checkBox(isChecked){
-               if ( isChecked == false){
-                   isChecked = true;
-               }else{
-                   isChecked = false;
-               }
-               $.get("https://nameyeowool.github.io/swe2030/todo/json/taskList.json",{"check":isChecked})
-           }
-
-           
-        </script>
-
-
-        <div id="plus" style="color:blue" onclick="add();">+ 새 목록</div>
-
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div>
+            <div id = "total" style = "width:100% ; height:30px">
+                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv8wRVknTfGsTch1WAsRi5TKq1RkOCy8dPPLg_FnuqO_n7tAmY"
+                     alt = "To-do icon">
+                <span>To-Do</span>
+                <span class ="count"></span>
+            </div>
+            <div id="listOuter" style = "width:100%"></div>
+            <div id = "addList" style = "width:100%; position:fixed ; bottom:0 ; left: 0">
+                <img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiGP0by9SBd7Rfyh7KF7eS-5iXpMCyXFY1tEH_1d9570837H6u" 
+                    alt="+icon">
+                <span style = "color:blue"> 새 목록 </span>
+            </div>
         </div>
+        
+        <script src = "main.js">
+            function renderList($data){
+                var data = $data.data, item, i;
+                $("#listOuter").empty();
+                for(i = 0 ; i < data.length; i ++){
+                    item = data[i];
+                    $("#listOuter").append(
+                        '<div class="list" onclick = "network(\'eachList\', null, \'' + item.name + '\')">' +
+                            '<img src ="'+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0h4YU36hHZIrx1DHlDXkiqzP5po7bmQ-fsfepfnt2-xLLl6CzZQ"'+
+                            'style="fill:'+item.color+'" alt ="list' + item.id+'image">'+
+                            '<span class="name">'+item.name + '</span>' +
+                            '<span class="count">' + item.count +'</span>' +
+                        '</div>'
+                    );
+                }
+                
+            };
+
+            var init = (function(){
+                var isInited =false;
+                return function init(){
+                    if(isInited) reuturn; else isInited = true;
+                    $('#addList').click(function(){
+                        var name = prompt("새 목록 이름을 입력하세요");
+                        name = name.trim();
+                        if(!name && name.length <3){
+                            alert("할일을 적어주세요... 2자이상...좀");
+                            return;
+                        }
+                        network("addList",renderList,name);
+                    })
+                    network("list",renderList);
+                }
+            })();
+            init();
+        </script>
     </body>
 </html>

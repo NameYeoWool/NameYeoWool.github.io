@@ -1,0 +1,105 @@
+<html>
+    <head>
+            <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+            <style>
+                #header div {vertical-align:middle;display:inline-block;}
+                #title {
+                    /* Firefox */width: -moz-calc(100% - 120px);
+                    /* WebKit */width: -webkit-calc(100% - 120px);
+                    /* Opera */width: -o-calc(100% - 120px);
+                    /* Standard */width: calc(100% - 120px);
+                    }
+                .task {height:30px}
+                a {text-decoration:none;}
+                .name {margin-left:15px;line-height:30px;display:block;float:left;position:relative;}
+                
+            </style>
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header" style="width:100%;height:63px">
+            <!-- home button -->
+            <div style="width:40px;text-align:center;font-size:35pt">
+                <a href= URLS.prefix + "index.html"><span>&#9776</span></a>
+            </div>
+            <!-- list name -->
+            <div id="title" style="text-align:left;margin:auto;font-size:35pt;padding-left:15px;"></div>
+            <!-- option menu -->
+            <div style="width:40px;height:100%;">
+                <img style="margin-left:14px;height:100%" src="https://openclipart.org/image/2400px/svg_to_png/241758/Menu-Circles.png" alt="option menu icon">
+            </div>
+        </div>
+
+        <!-- tasks -->
+        <div id="tasks">
+
+        </div>
+
+        <!-- button -->
+        <div id="addTask" style="position:fixed;bottom:15px;right:15px;width:50px;height:50px">
+            <img style="width:50px;height:50px" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/512/add_blue.png" alt="plus button">
+        </div>
+    </body>
+    <script>
+        var loc = location.href.split("?");
+        var loc1 = decodeURI(loc[1]);
+        var temp = loc1.split("=");
+        var title = "<span>"+temp[1]+"</span>";
+
+        console.log(title);
+        $("#title").append(title);
+
+        
+        function renderTaskList($data){
+            var data = $data.data, item, i ;
+            3("#listOuter").empty();
+            for(i =0 ; i< data.length; i++){
+                
+            }
+
+
+            $.get($url,function($data,{name:name} ,status){
+                for(i=0;i<$data.data.length;i++){
+                    var tasks = "";
+
+                    tasks +='<div class="task">'+'<img class="iconImage" onclick="changeComplete(this)" style="width:30px;height:30px;float:left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYR4sh0fM1Buy__0F9ea9VWazxLdfj9fV0dGCse3mMKiW5UVR-Yw" alt="unchecked">'
+                    tasks +='<span class="name">'+$data.data[i].name+'</span>'
+                    tasks+='</div>'
+                    $("#tasks").append(tasks);
+                }
+            });
+        };
+
+        makeTask("https://kdy0962.github.io/todo/jsonData/taskList.json");
+
+        $('#addTask').click(function(){
+            var name = prompt("새 할 일의 이름을 입력하세요.");
+            $("#tasks").empty();
+            makeTask("https://kdy0962.github.io/todo/jsonData/taskAdd.json");
+        });
+        var uncheckedIcon = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYR4sh0fM1Buy__0F9ea9VWazxLdfj9fV0dGCse3mMKiW5UVR-Yw"
+        var checkedIcon = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ok_sign_font_awesome.svg/2000px-Ok_sign_font_awesome.svg.png";
+        
+        
+        function changeComplete(self){
+            var complete=false;
+            if($(self).attr("alt")=="unchecked"){
+                complete=true;
+                $(self).attr("alt","checked");
+                $(self).attr("src", checkedIcon);
+                $(self).parent().children(".name").css("text-decoration","line-through");
+            }else{
+                complete=false;
+                $(self).attr("alt","unchecked");
+                $(self).attr("src", uncheckedIcon);
+                $(self).parent().children(".name").css("text-decoration","none");
+            }
+            $.get("https://kdy0962.github.io/todo/jsonData/taskList.json",{complete:complete});
+            
+        };
+    </script>
+
+</html>

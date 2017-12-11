@@ -16,7 +16,7 @@
             "Due": "Today",
             "alaram":"",
             "Note":"",
-            "check": "True"
+            "complete": "true"
         },
     
         {
@@ -26,7 +26,7 @@
             "alarm": "Tomorrow",
             "Due": "Today",
             "Note": "",
-            "check":"false"
+            "complete":"false"
         }
     ]
     

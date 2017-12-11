@@ -7,16 +7,16 @@
             "alaram":"",
             "Due": "Today",
             "Note":"",
-            "check": "True"
+            "complete": "true"
         },
         {
             "id":2, 
             "name":"소프트웨어 실습", 
             "list": "To-Do",
             "Due": "Today",
-            "alaram":"",
+            "alarm":"",
             "Note":"",
-            "check": "True"
+            "complete": "true"
         }
     ]
     

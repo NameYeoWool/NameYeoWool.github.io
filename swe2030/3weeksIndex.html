@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <style>
+            img {width:24px;vertical-align:middle;margin-left:15px;margin-right:15px;}
+            span {vertical-align:middle}
+            .list {height:30px;}
+            .list img {width:30px}
+            .count {position:absolute;right:50px;color:gray}
+        </style>
+        <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div>
+            <div id="total" style="width:100%;height:30px">
+                <img src="TodoIcon.svg" alt="To-do icon">
+                <span>To-Do</span>
+                <span class="count"></span>
+            </div>
+            <div id="listOuter" style="width:100%">
+
+            </div>
+            <div id="addList" style="width:100%;position:fixed;bottom:0;left:0">
+                <img src="plusIcon.svg" alt="+icon">
+                <span style="color:blue">새 목록</span>
+            </div>
+        </div>
+        <script>
+            this.urls = [];
+            var URLS = {prefix:"https://kdy0962.github.io/todo/",
+                        list:"jsonData/groupList.json",
+                        eachList:"list.html",
+                        groupAdd:"jsonData/groupAdd.json"
+                        };
+            function eachList(name){
+                location.href = URLS.prefix + URLS.eachList+"?name="+encodeURIComponent(name);
+            };
+            
+            //공통 리스트그리기 로직
+            function renderList($data){
+                var data= $data.data,item,i;
+                $("#listOuter").empty();
+                for(i=0;i<$data.data.length;i++){
+                    item = data[i];
+                    $("#listOuter").append(
+                        '<div class="list" onclick="eachList('+item.name+')">'
+                        +'<img src="'+'listIcon.svg" style="fill:'+item.color+'" alt="list'+item.id+' image">'
+                        +'<span class="name">'+item.name+'</span>'+'<span class="count">'+item.count+'</span>'+
+                        '</div>'
+                    );
+                
+                }
+            };
+            var init =(function(){
+                var isInited = false;
+                function init(){
+                    if(isInited) return; else isInited = true;
+                    //addList를 초기화한다.
+                    $('#addList').click(function(){
+                        var name = prompt("새 목록 이름을 입력하세요.");
+                        name = name.trim();
+                        if(!name && name.length<3){
+                            alert("할일을 적어주세요...2자 이상... 좀...");
+                            return;
+                        }
+                        $.get(URLS.prefix + URLS.groupAdd,{name:name}, renderList);
+                    });
+                    $.get(URLS.prefix + URLS.list, renderList);
+                };
+            })();
+            
+            init();
+            
+            
+        </script>
+    </body>
+</html>
