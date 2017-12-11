@@ -44,8 +44,8 @@ function network(command, end, arg){
             break;
         
         case "toggleComplete":
-            $.get(URLS.prefix + URLS.toggleComplete1,{id:arg[0],complete:arg[1]}, end);
-        
+            $.get(URLS.prefix + URLS.toggleComplete1,{id:arg}, end);
+            break;
             
         default: throw "invalid command";
     }
