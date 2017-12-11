@@ -80,7 +80,7 @@
         init();
         function toggleComplete(img, i){
             var item = current[i];
-            network("toggleComplete",renderTaskList,{id:item.id});
+            network("toggleComplete",renderTaskList,{id:item.id,complete:item.complete});
         }
     </script>
 
