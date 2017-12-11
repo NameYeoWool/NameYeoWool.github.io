@@ -76,8 +76,9 @@
             //location.search - 검색 쿼리 부분으로 주소 부분의 ? 와 그 뒷부분
             //substr(6)을 해줌으로써 ?name=   이후를 검색
             network("taskList",renderTaksList,location.search.substr(6))
-        }
+        };
         
+        init();
         function toggleComplete(img, i){
             var item = current[i];
             network("toggleComplete",renderTaskList,{id:item.id,complete:item.complete});
