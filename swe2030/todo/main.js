@@ -10,7 +10,9 @@ var URLS = {
     eachList:"list.html",
     groupAdd:"json/groupAdd.json",
     taskList:"json/taskList.json",
-    taskAdd:"json/taskAdd.json"
+    taskAdd:"json/taskAdd.json",
+    toggleComplete1:"json/taskUncomplete.json",
+    togglecomplete2:"json/taskUncomplete2.json"
 };
 
 
@@ -42,8 +44,9 @@ function network(command, end, arg){
             break;
         
         case "toggleComplete":
-            $.get(URLS.prefix + URLS.taskList,{id:arg[0],complete:arg[1]}, end);
+            $.get(URLS.prefix + URLS.toggleComplete,{id:arg[0],complete:arg[1]}, end);
         
+            
         default: throw "invalid command";
     }
 }
