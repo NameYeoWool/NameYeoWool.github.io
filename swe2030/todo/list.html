@@ -23,7 +23,7 @@
         <div id="header" style="width:100%;height:63px">
             <!-- home button -->
             <div style="width:40px;text-align:center;font-size:35pt">
-                <a href= URLS.prefix + "index.html"><span>&#9776</span></a>
+                <a href= "https://NameYeoWool.github.io/swe2030/todo/index.html"><span>&#9776</span></a>
             </div>
             <!-- list name -->
             <div id="title" style="text-align:left;margin:auto;font-size:35pt;padding-left:15px;"></div>
@@ -53,6 +53,7 @@
             $("#tasks").empty();
             var i;
                 for(i =0 ; i<$data.data.length; i++){
+                    console.log(i)
                     item = current[i];
                     $("#tasks").append(
                         '<div class="task">'
