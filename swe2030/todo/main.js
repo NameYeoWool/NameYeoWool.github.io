@@ -1,6 +1,6 @@
 var URLS = {
     //prefix:"localhost:8080", //"http://kdy0962.github.io/todo/",
-    prefix:"http://NameYeoWool.github.io/swe2030/todo/",
+    prefix:"https://NameYeoWool.github.io/swe2030/todo/",
     icon:{
         unchecked:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYR4sh0fM1Buy__0F9ea9VWazxLdfj9fV0dGCse3mMKiW5UVR-Yw",
         checked:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ok_sign_font_awesome.svg/2000px-Ok_sign_font_awesome.svg.png"
